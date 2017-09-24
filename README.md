@@ -16,7 +16,9 @@ Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docke
 
 That error may be quite puzzling since the Docker install succeeds from winthin the bash window. However, the docker deamon is not - as the error states - running in the subsystem. `ps -e` will confirm that there is no `dockerd`. 
 
-If you already have Docker for Windows (https://docs.docker.com/docker-for-windows/) running on your machine it's running outside of the WSL (the Windows Subsystem for Linux). Docker for Windows by listens for commands from the client on TCP and Named Pipes. The named pipe isn't accessible from the WSL, but the client can connect from WSL to the docker Windows Service via TCP. 
+If you already have Docker for Windows (https://docs.docker.com/docker-for-windows/) running on your machine it's running outside of the WSL (the Windows Subsystem for Linux). Docker for Windows listens for commands from the client on TCP and Named Pipes. The named pipe isn't accessible from the WSL, but the client can connect from WSL to the docker Windows Service via TCP. 
+Please note, that in some newer versions of Docker for Windows you have to enable the feature first.
+You do so by right-clicking the tray icon -> click Settings.. -> mark "Expose Daemon on tcp://localhost:2375 without TLS".
 
 Sounds backwards, but it's true. How? Easy:
 
